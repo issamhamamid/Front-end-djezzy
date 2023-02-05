@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+   #issam{
+    position: absolute;
+    top: 353px;
+    left: 459px;
+   }
+
+ #lock{
+    position: absolute;
+    top: 423px;
+    left: 459px;
+ }
+}
+
