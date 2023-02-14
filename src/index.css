@@ -2,17 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-   #issam{
-    position: absolute;
-    top: 353px;
-    left: 459px;
-   }
+// Dashboard NavBar transition
 
- #lock{
-    position: absolute;
-    top: 423px;
-    left: 459px;
- }
+
+.btn-open {
+position: absolute;
+top: 20px;
+right: calc(100% - 60px);
+background-color: #000;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+}
+
+.btn-close {
+position: absolute;
+top: 20px;
+right: calc(100% - 60px);
+background-color: #fff;
+color: #000;
+padding: 10px 20px;
+border: 1px solid #000;
+border-radius: 5px;
 }
 
