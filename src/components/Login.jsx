@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import logo from "../assets/djezzy.png";
 import {FaUser, FaLock} from "react-icons/fa";
-import {BrowserRouter , Routes , Route , useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 export default function Login() {
     const [loginFormData, setLoginFormData] = useState({

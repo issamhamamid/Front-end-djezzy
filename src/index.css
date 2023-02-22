@@ -5,25 +5,38 @@
 // Dashboard NavBar transition
 
 
-.btn-open {
-position: absolute;
-top: 20px;
-right: calc(100% - 60px);
-background-color: #000;
-color: #fff;
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
+/* When the element is entering */
+.transition-all.enter {
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+  transform: translateX(-100%);
 }
 
-.btn-close {
-position: absolute;
-top: 20px;
-right: calc(100% - 60px);
-background-color: #fff;
-color: #000;
-padding: 10px 20px;
-border: 1px solid #000;
-border-radius: 5px;
+/* When the element is entering, but its animation has not yet started */
+.transition-all.enter-from {
+  transform: translateX(-100%);
 }
+
+/* When the element is entering, and its animation is complete */
+.transition-all.enter-to {
+  transform: translateX(0);
+}
+
+/* When the element is leaving */
+.transition-all.leave {
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+  transform: translateX(0);
+}
+
+/* When the element is leaving, but its animation has not yet started */
+.transition-all.leave-from {
+  transform: translateX(0);
+}
+
+/* When the element is leaving, and its animation is complete */
+.transition-all.leave-to {
+  transform: translateX(-100%);
+}
+
 
