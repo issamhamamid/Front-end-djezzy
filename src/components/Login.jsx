@@ -1,17 +1,32 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import logo from "../assets/djezzy.png";
 import {FaUser, FaLock} from "react-icons/fa";
 import {BrowserRouter , Routes , Route , useNavigate} from "react-router-dom";
+import {useLocalState} from "../util/useLocalStorage";
+import {message} from "antd";
 
 export default function Login() {
+
+
+    const [token , setToken] = useLocalState("" , "token");
+
+
+
+
+
     const [loginFormData, setLoginFormData] = useState({
         username: "",
         password: "",
     });
 
+
+
+
+
+
+
     const [account , setaccount] = useState(false)
     const handleChange = (event) => {
-        console.log(event.target.value)
         setLoginFormData({
             ...loginFormData,
             [event.target.name]: event.target.value,
@@ -21,17 +36,53 @@ export default function Login() {
 
 
 
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(loginFormData.username==="issam" && loginFormData.password==="123"){
-            navigate('/UserTable')
-        }
-        else{
-            setaccount(true)
-        }
-    };
 
-    const navigate = useNavigate();
+                    const reqBody = {
+                        "username" : loginFormData.username,
+                        "password" : loginFormData.password
+
+                    };
+
+                    fetch("auth" , {
+                        headers: {
+                            "Content-Type": "application/json" ,
+                        },
+                        method : "post" ,
+                        body: JSON.stringify(reqBody)
+                    })
+
+
+                        .then((response) => {
+                            if (response.status === 200)
+                                return Promise.all(([response.text(), response.body]));
+                            else{
+                                return Promise.reject("invalid login attempt")
+                            }
+                        })
+                        .then(([body , headers]) => {
+                            setToken(body);
+                            window.location.href = 'table'
+
+                            }
+                        )
+                        .catch((message) => {
+                            setaccount(true)
+                        })
+
+
+
+                        }
+
+
+
+
+
+
+
 
 
     return (
