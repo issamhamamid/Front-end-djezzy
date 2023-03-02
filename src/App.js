@@ -44,7 +44,7 @@ function App() {
                     </PrivateRoute> ) :
                         (
                             <PrivateRoute>
-                                <Navbaar/>
+                                <Home/>
                             </PrivateRoute>
 
                         )
