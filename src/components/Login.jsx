@@ -77,7 +77,9 @@ export default function Login() {
 
                         }
 
-
+    function GotoHome(){
+        window.location.href='/home'
+    }
 
 
 
@@ -188,7 +190,7 @@ export default function Login() {
                             </div>
                         </form>
 
-                        <button
+                        <button onClick={GotoHome}
                             type="submit"
                             className="flex items-center justify-center focus:outline-none mt-4 border-2 border-red-600 rounded-full text-red-700 text-base bg-white hover:text-white hover:bg-red-700 py-2 w-full transition duration-150 ease-in"
                         >

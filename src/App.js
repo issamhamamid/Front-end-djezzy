@@ -15,6 +15,7 @@ import Navbaar from "./components/Navbaar";
 import {useLocalState} from "./util/useLocalStorage";
 import {useState} from "react";
 import jwt_decode from "jwt-decode";
+import HomeNav from "./components/HomeNav";
 
 function App() {
 
@@ -44,7 +45,7 @@ function App() {
                     </PrivateRoute> ) :
                         (
                             <PrivateRoute>
-                                <Home/>
+                                <Navbaar/>
                             </PrivateRoute>
 
                         )
@@ -54,6 +55,7 @@ function App() {
                 <Route path ='/register' element={<Register/>}></Route>
                 <Route path ='/update/:id' element={<UpdateUser/>}></Route>
                 <Route path ='/navbar' element={<Navbaar/>}></Route>
+                <Route path ='/nav' element={<HomeNav/>}></Route>
 
             </Routes>
         </BrowserRouter>

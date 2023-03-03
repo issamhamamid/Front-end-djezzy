@@ -7,4 +7,12 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+
+  theme: {
+    extend: {
+      colors: {
+        'custom-gray': '#6B7381',
+      },
+    },
+  },
 }
