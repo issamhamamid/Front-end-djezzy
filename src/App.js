@@ -8,6 +8,8 @@ import UserTable from "./components/UserTable.jsx";
 import Loading from "./components/Loading";
 import Register from "./components/Register";
 // import Loading from "./components/Loading";
+
+
 import {BrowserRouter , Routes , Route , useNavigate} from "react-router-dom";
 import UpdateUser from "./components/Updateuser";
 import PrivateRoute from "./PrivateRoute";
@@ -37,7 +39,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                <Route path ='/login' element={<Login/>}></Route>
-                <Route path ='/home' element={<Home/>}></Route>
+                <Route path ='/' element={<Home/>}></Route>
                 <Route path ='/table' element={
                     role ==="ROLE_ADMIN" ? (
                     <PrivateRoute>

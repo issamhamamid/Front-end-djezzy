@@ -78,7 +78,7 @@ export default function Login() {
                         }
 
     function GotoHome(){
-        window.location.href='/home'
+        window.location.href='/'
     }
 
 
