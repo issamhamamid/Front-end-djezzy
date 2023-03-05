@@ -1,105 +1,74 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {AiOutlineMenu} from "react-icons/ai";
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import {TooltipComponent} from "@syncfusion/ej2-react-popups";
+import user from'../data/user.jpg'
+import UserProfile from "./UserProfile";
+
+import {useStateContext} from "../contexts/ContextProvider";
 
 function NavBar() {
-  const [isOpen, setIsOpen] = React.useState(true);
+    const {activeMenu , setActiveMenu , isClicked , setisClicked , handleClick , screenSize , setScreenSize} = useStateContext()
+    useStateContext();
+
+    useEffect(()=>{
+          const handleResize =() => setScreenSize(window.innerWidth)
+        window.addEventListener('resize' , handleResize)
+        handleResize()
+        return() => window.removeEventListener('resize' , handleResize)
+
+    }, [])
+
+    useEffect(()=>{
+         if(screenSize<=900) {
+             setActiveMenu(false)
+
+         }
+         else {
+             setActiveMenu(true)
+         }
+    } , [screenSize])
+
+const NavButton = ({title , customFunc , icon , color , dotColor}) => (
+    <TooltipComponent content={title} position="BottomCenter">
+    <button className="relative text-xl rounded-full p-3 hover:bg-light-gray" type="button" onClick={customFunc} style={{color}}>
+      <span className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2" style={{background:dotColor}}
+      />
+        {icon}
+
+    </button>
+    </TooltipComponent>
+)
 
   return (
-    <div
-      className={`${
-        isOpen ? "translate-x-full" : "translate-x-0"
-      } w-64 bg-white h-screen fixed ease-in-out top-0 left-0 border-r border-gray-300 rounded-r-md`}
-    >
-      <div className="py-6 relative">
-        <h3 className="text-lg font-medium text-gray-700 text-center">
-          Dashboard
-        </h3>
-        <ul className="mt-6">
-          <li className="mb-2">
-            <a
-              href="a"
-              className="block py-2 px-4 hover:bg-gray-100 text-gray-700 rounded-r-lg font-medium"
-            >
-              Home
-            </a>
-          </li>
-          <li className="mb-2">
-            <a
-              href="a#"
-              className="block py-2 px-4 hover:bg-gray-100 text-gray-700 rounded-r-lg font-medium"
-            >
-              Network Overview
-            </a>
-          </li>
-          <li className="mb-2">
-            <a
-              href="a#"
-              className="block py-2 px-4 hover:bg-gray-100 text-gray-700 rounded-r-lg font-medium"
-            >
-              Network KPIs
-            </a>
-          </li>
-          <li className="mb-2">
-            <a
-              href="a#"
-              className="block py-2 px-4 hover:bg-gray-310 text-gray-700 rounded-r-lg font-medium"
-            >
-              Network Performance
-            </a>
-          </li>
-          <li className="mb-2">
-            <a
-              href="a#"
-              className="block py-2 px-4 hover:bg-gray-100 text-gray-700 rounded-r-lg font-medium"
-            >
-              Customer KPIs
-            </a>
-          </li>
-          <li className="mb-2">
-            <a
-              href="a#"
-              className="block py-2 px-4 hover:bg-gray-100 text-gray-700 rounded-r-lg font-medium"
-            >
-              Reports
-            </a>
-          </li>
-          <li className="mb-2">
-            <a
-              href="a#"
-              className="block py-2 px-4 hover:bg-gray-100 text-gray-700 rounded-r-lg font-medium"
-            >
-              Settings
-            </a>
-          </li>
-          <li className="mb-2">
-            <a
-              href="a#"
-              className="block py-2 px-4 hover:bg-gray-100 text-gray-700 rounded-r-lg font-medium"
-            >
-              Profile
-            </a>
-          </li>
-        </ul>
+    <div className="flex justify-between p-2 md:mx-6 relative">
+   <NavButton  title="Menu"
+               customFunc={()=> setActiveMenu((prevActiveMenu)=>! prevActiveMenu )}
+               color="red"
+               icon={<AiOutlineMenu/>} />
+
+      <div className="flex">
+
+
+
+        <TooltipComponent content="Profile" position="BottomCenter">
+          <div className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg" onClick={()=>handleClick('userProfile')}>
+            <img className="rounded-full w-8 h-8" src={user}
+            />
+              <p>
+                  <span className="text-black text-xl text-black ">Bonjour , </span> { ' '}
+                  <span className="text-black font-bold ml-1 text-xl">Utilisateur</span>
+
+              </p>
+              < MdKeyboardArrowDown className="text-gray-400 text-14"/>
+
+          </div>
+        </TooltipComponent>
+          {isClicked.userProfile && <UserProfile/>}
+
       </div>
-
-      <button
-        className={`
-         block mt-4 ml-4 bg-gray-700 text-white p-4 rounded hover:bg-indigo-700 absolute
-        ${isOpen ? "top-8 left-64 bg-red-400 " : "top-8 right-10"}`}
-        style={{ top: "30px", right: "calc(100% - 40px)" }}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? "Close" : "Open"}
-      </button>
     </div>
-    // <div className="relative bg-black">
 
-    //   <div
-    //     className={`${
-    //       isOpen ? "block" : "hidden"
-    //     } w-64 bg-gray-600 fixed top-0 bottom-0 z-10  rounded-r-md transition duration-500 ease-in-out transform ${
-    //       isOpen ? "translate-x-0" : "translate-x-full"
-    //     }`}
-    //   >
   );
 }
 

@@ -4,6 +4,8 @@ import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import {useNavigate} from "react-router-dom";
 import {useLocalState} from "../util/useLocalStorage";
 import Navbaar from "./Navbaar";
+import Sidebar from "./Sidebar";
+import NavBar from "./NavBar";
 
 
 const UserTable = () => {
@@ -101,8 +103,10 @@ const UserTable = () => {
 
     return (
         <div>
-            <Navbaar/>
-        <Table columns={columns} dataSource={users} />
+
+
+            <Table columns={columns} dataSource={users} />
+
 
         </div>
     );

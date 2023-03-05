@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import logo from "../assets/djezzy.png";
+import Sidebar from "./Sidebar";
+import NavBar from "./NavBar";
+import {useStateContext} from "../contexts/ContextProvider";
 
 function Register() {
   const [registerFormData, setRegisterFormData] = useState({
@@ -24,7 +27,11 @@ function Register() {
     // your form submission logic here
   };
 
+  const  {activeMenu} = useStateContext()
+
   return (
+      <div>
+
     <div className="bg-gray-200 min-h-screen">
       <div className="p-4 mx-auto max-w-lg pt-12">
         <form
@@ -172,6 +179,7 @@ function Register() {
         </form>
       </div>
     </div>
+      </div>
   );
 }
 

@@ -25,7 +25,8 @@ function HomeNav() {
 
                 </div>
                 <div className='hidden md:flex pr-4'>
-                    <button className='px-8 py-3'>SE CONNECTER</button>
+                    <button className='px-8 text-white border bg-red-600 border-red-600
+        hover:bg-red-800  rounded-md py-3'>SE CONNECTER</button>
                 </div>
            <div className='md:hidden' onClick={handleClick}>
                {!nav ?  <MenuIcon  className='w-5'/> : <FaTimesCircle className='w-5'/> }
@@ -38,7 +39,8 @@ function HomeNav() {
                 <li className='border-b-2 border-zinc-300 w-full'>Contact</li>
                 <li className='border-b-2 border-zinc-300 w-full'>Support</li>
                 <div className='flex flex-col my-4'>
-                    <button className='px-8 py-3'>SE CONNECTER</button>
+                    <button className='px-8 text-white border bg-red-600 border-red-600
+        hover:bg-red-800  rounded-md py-3'>SE CONNECTER</button>
                 </div>
             </ul>
 

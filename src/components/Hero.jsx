@@ -13,7 +13,8 @@ function Hero() {
           <div className='flex flex-col justify-center md:items-start w-full px-2 py-8 mr-10'>
               <h1 className='font-bold text-7xl md:text-7xl' >BIENVENUE</h1>
               <p className='py-3 font-bold text-xl'>Veuillez vous connecter pour commencer </p>
-              <button  onClick={GotoLogin} className='px-6 py-3 sm:w-[60%] my-4' >SE CONNECTER</button>
+              <button  onClick={GotoLogin} className='px-6 text-white border bg-red-600 border-red-600
+        hover:bg-red-800  rounded-md py-3 sm:w-[60%] my-4' >SE CONNECTER</button>
           </div>
             <div>
                 <img

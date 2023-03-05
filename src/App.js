@@ -4,10 +4,13 @@
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Test from "./components/Test";
 import UserTable from "./components/UserTable.jsx";
 import Loading from "./components/Loading";
 import Register from "./components/Register";
 // import Loading from "./components/Loading";
+import  {TooltipComponent} from "@syncfusion/ej2-react-popups";
+import {FiSettings} from "react-icons/fi";
 
 
 import {BrowserRouter , Routes , Route , useNavigate} from "react-router-dom";
@@ -37,6 +40,7 @@ function App() {
   return (
     <div >
         <BrowserRouter>
+
             <Routes>
                <Route path ='/login' element={<Login/>}></Route>
                 <Route path ='/' element={<Home/>}></Route>
@@ -54,10 +58,12 @@ function App() {
 
 
                 }></Route>
-                <Route path ='/register' element={<Register/>}></Route>
+
                 <Route path ='/update/:id' element={<UpdateUser/>}></Route>
                 <Route path ='/navbar' element={<Navbaar/>}></Route>
+                <Route path ='/n' element={<NavBar/>}></Route>
                 <Route path ='/nav' element={<HomeNav/>}></Route>
+                <Route path ='/test/*' element={<Test/>}></Route>
 
             </Routes>
         </BrowserRouter>
