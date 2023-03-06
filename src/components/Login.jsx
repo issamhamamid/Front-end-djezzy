@@ -65,7 +65,7 @@ export default function Login() {
                         })
                         .then(([body , headers]) => {
                             setToken(body);
-                            window.location.href = 'table'
+                            window.location.href = 'test/*'
 
                             }
                         )

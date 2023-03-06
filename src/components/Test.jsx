@@ -15,6 +15,9 @@ import Register from "./Register";
 import UpdateUser from "./Updateuser";
 import HomeNav from "./HomeNav";
 import Newt from "./Newt";
+import Main from "./Main";
+import Utilisateurs from "./Utilisateurs";
+import Update from "./Update";
 
 
 
@@ -51,7 +54,10 @@ const Test = () => {
                         <div>
 
                             <Routes>
-                                <Route path ='/register' element={<Register/>}></Route>
+                                <Route path ='/main' element={<Main/>}></Route>
+                                <Route path ='/users' element={<Utilisateurs/>}></Route>
+                                <Route path ='/update' element={<Update/>}></Route>
+
 
 
 

@@ -18,9 +18,10 @@ import UpdateUser from "./components/Updateuser";
 import PrivateRoute from "./PrivateRoute";
 import Navbaar from "./components/Navbaar";
 import {useLocalState} from "./util/useLocalStorage";
-import {useState} from "react";
+import React, {useState} from "react";
 import jwt_decode from "jwt-decode";
 import HomeNav from "./components/HomeNav";
+import Utilisateurs from "./components/Utilisateurs";
 
 function App() {
 
@@ -44,10 +45,10 @@ function App() {
             <Routes>
                <Route path ='/login' element={<Login/>}></Route>
                 <Route path ='/' element={<Home/>}></Route>
-                <Route path ='/table' element={
+                <Route path ='/test/*' element={
                     role ==="ROLE_ADMIN" ? (
                     <PrivateRoute>
-                    <UserTable/>
+                    <Test/>
                     </PrivateRoute> ) :
                         (
                             <PrivateRoute>
@@ -63,7 +64,7 @@ function App() {
                 <Route path ='/navbar' element={<Navbaar/>}></Route>
                 <Route path ='/n' element={<NavBar/>}></Route>
                 <Route path ='/nav' element={<HomeNav/>}></Route>
-                <Route path ='/test/*' element={<Test/>}></Route>
+
 
             </Routes>
         </BrowserRouter>

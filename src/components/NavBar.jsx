@@ -53,11 +53,11 @@ const NavButton = ({title , customFunc , icon , color , dotColor}) => (
 
         <TooltipComponent content="Profile" position="BottomCenter">
           <div className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg" onClick={()=>handleClick('userProfile')}>
-            <img className="rounded-full w-8 h-8" src={user}
+            <img className="rounded-full w-10 h-10" src={user}
             />
               <p>
-                  <span className="text-black text-xl text-black ">Bonjour , </span> { ' '}
-                  <span className="text-black font-bold ml-1 text-xl">Utilisateur</span>
+
+                  <span className="text-black  ml-1 text-xl">Utilisateur</span>
 
               </p>
               < MdKeyboardArrowDown className="text-gray-400 text-14"/>

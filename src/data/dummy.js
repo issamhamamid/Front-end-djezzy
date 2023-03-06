@@ -494,7 +494,7 @@ export const links = [
     title: 'Utilisateurs',
     links: [
       {
-        goto: "" ,
+        goto: "test/users" ,
         name: "Liste d'utilisateurs",
         icon: <FiUsers />,
       },
