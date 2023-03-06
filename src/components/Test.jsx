@@ -57,6 +57,7 @@ const Test = () => {
                                 <Route path ='/main' element={<Main/>}></Route>
                                 <Route path ='/users' element={<Utilisateurs/>}></Route>
                                 <Route path ='/update' element={<Update/>}></Route>
+                                <Route path ='/register' element={<Register/>}></Route>
 
 
 
