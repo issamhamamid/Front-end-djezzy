@@ -1,9 +1,7 @@
-import React from 'react';
+import React from "react";
 
 function UserProfile() {
-    return (
-        <div>dfdfdfd</div>
-    );
+  return <div>dfdfdfd</div>;
 }
 
 export default UserProfile;
