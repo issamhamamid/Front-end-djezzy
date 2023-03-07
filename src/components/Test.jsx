@@ -18,12 +18,15 @@ import Newt from "./Newt";
 import Main from "./Main";
 import Utilisateurs from "./Utilisateurs";
 import Update from "./Update";
+import {useLocalState} from "../util/useLocalStorage";
 
 
 
 
 
 const Test = () => {
+
+    const [token , setToken] = useLocalState("" , "token");
 
     const  {activeMenu} = useStateContext()
     return (
@@ -57,7 +60,8 @@ const Test = () => {
                                 <Route path ='/main' element={<Main/>}></Route>
                                 <Route path ='/users' element={<Utilisateurs/>}></Route>
                                 <Route path ='/update' element={<Update/>}></Route>
-                                <Route path ='/register' element={<Register/>}></Route>
+
+
 
 
 

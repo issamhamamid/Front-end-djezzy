@@ -1,27 +1,25 @@
-// import Login from './components/Login';
-// import Home from './components/Home';
-// import Register from './components/Register';
+
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Test from "./components/Test";
 import UserTable from "./components/UserTable.jsx";
-import Loading from "./components/Loading";
-import Register from "./components/Register";
-// import Loading from "./components/Loading";
-import  {TooltipComponent} from "@syncfusion/ej2-react-popups";
-import {FiSettings} from "react-icons/fi";
 
 
-import {BrowserRouter , Routes , Route , useNavigate} from "react-router-dom";
-import UpdateUser from "./components/Updateuser";
+
+
+import {BrowserRouter , Routes , Route } from "react-router-dom";
+
 import PrivateRoute from "./PrivateRoute";
 import Navbaar from "./components/Navbaar";
 import {useLocalState} from "./util/useLocalStorage";
 import React, {useState} from "react";
 import jwt_decode from "jwt-decode";
 import HomeNav from "./components/HomeNav";
-import Utilisateurs from "./components/Utilisateurs";
+
+import New from "./components/New";
+import RegisterForm from "./components/RegisterForm";
+
 
 function App() {
 
@@ -39,6 +37,10 @@ function App() {
     }
 
   return (
+
+
+
+
     <div >
         <BrowserRouter>
 
@@ -60,10 +62,20 @@ function App() {
 
                 }></Route>
 
-                <Route path ='/update/:id' element={<UpdateUser/>}></Route>
-                <Route path ='/navbar' element={<Navbaar/>}></Route>
+
                 <Route path ='/n' element={<NavBar/>}></Route>
+                <Route path ='/register' element={
+                    <PrivateRoute>
+                        <RegisterForm/>
+                    </PrivateRoute>
+                }></Route>
                 <Route path ='/nav' element={<HomeNav/>}></Route>
+                <Route path ='/up' element={<UserTable/>}></Route>
+                <Route path ='/new' element={
+                    <PrivateRoute>
+                    <New/>
+                    </PrivateRoute>
+                }></Route>
 
 
             </Routes>
