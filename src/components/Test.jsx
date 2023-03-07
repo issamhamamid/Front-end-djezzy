@@ -1,19 +1,11 @@
 import React from 'react';
 import './App.css'
-import  {TooltipComponent} from "@syncfusion/ej2-react-popups";
-import {FiSettings} from "react-icons/fi";
+
 import Sidebar from "./Sidebar";
 import {useStateContext} from "../contexts/ContextProvider";
 import NavBar from "./NavBar";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Login from "./Login";
-import Home from "./Home";
-import PrivateRoute from "../PrivateRoute";
-import UserTable from "./UserTable";
-import Navbaar from "./Navbaar";
-import Register from "./Register";
-import UpdateUser from "./Updateuser";
-import HomeNav from "./HomeNav";
+
 import Main from "./Main";
 import Utilisateurs from "./Utilisateurs";
 import Update from "./Update";
