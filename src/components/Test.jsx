@@ -6,10 +6,13 @@ import {useStateContext} from "../contexts/ContextProvider";
 import NavBar from "./NavBar";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-import Main from "./Main";
+
 import Utilisateurs from "./Utilisateurs";
 import Update from "./Update";
 import {useLocalState} from "../util/useLocalStorage";
+import Register from "./Register";
+import PrivateRoute from "../PrivateRoute";
+
 
 
 
@@ -48,9 +51,17 @@ const Test = () => {
                         <div>
 
                             <Routes>
-                                <Route path ='/main' element={<Main/>}></Route>
+
                                 <Route path ='/users' element={<Utilisateurs/>}></Route>
-                                <Route path ='/update' element={<Update/>}></Route>
+                                <Route path ='/register' element={<Register/>}></Route>
+                                <Route path ='/update/:id' element={
+                                    <PrivateRoute>
+                                        <Update/>
+                                    </PrivateRoute>
+                                }></Route>
+
+
+
 
 
 

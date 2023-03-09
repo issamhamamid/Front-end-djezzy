@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
@@ -6,6 +6,8 @@ import user from "../data/user.jpg";
 import UserProfile from "./UserProfile";
 
 import { useStateContext } from "../contexts/ContextProvider";
+import {useLocalState} from "../util/useLocalStorage";
+import jwt_decode from "jwt-decode";
 
 function NavBar() {
   const {
@@ -51,6 +53,21 @@ function NavBar() {
     </TooltipComponent>
   );
 
+  const [token , setToken] = useLocalState("" , "token");
+
+  const [name , setName] = useState(getNameFromToken())
+
+  function getNameFromToken() {
+    if( token ){
+      if(token.length> 50){
+
+        const decodeToken = jwt_decode(token)
+
+        return decodeToken.firstname
+      }
+    }
+  }
+
   return (
     <div className="flex justify-between p-2 md:mx-6 relative">
       <NavButton
@@ -68,9 +85,9 @@ function NavBar() {
           >
             <img className="rounded-full w-10 h-10" src={user} />
             <p>
-              <span className="text-black  ml-1 text-xl">Utilisateur</span>
+              <span className="text-black  ml-1 text-xl">{name}</span>
             </p>
-            <MdKeyboardArrowDown className="text-gray-400 text-14" />
+            <MdKeyboardArrowDown className="text-gray-600 text-14 w-7 h-7" />
           </div>
         </TooltipComponent>
         {isClicked.userProfile && <UserProfile />}

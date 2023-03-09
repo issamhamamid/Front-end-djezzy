@@ -1,78 +1,80 @@
-import React, {useEffect, useState} from "react";
-import { SearchIcon } from '@heroicons/react/solid';
-import {useLocalState} from "../util/useLocalStorage";
+import React, { useEffect, useState } from "react";
+import { SearchIcon } from "@heroicons/react/solid";
+import { useLocalState } from "../util/useLocalStorage";
 import DeleteUserModal from "./DeleteUserModal";
 
 function DataTable() {
+    const [selected, setSelected] = useState(null);
 
+    const [token, setToken] = useLocalState("", "token");
 
-    const [selected , setSelected] = useState(null)
-
-    const [token , setToken] = useLocalState("" , "token");
-
-    useEffect(()=> {
-        fetch("users", {
+    useEffect(() => {
+        fetch("/users", {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
             method: "GET",
-        }).then(response => {if(response.status ===200) return response.json();
-        }).then(userData =>{
-            setUsers(userData)
-
         })
-
-
-    } , [])
+            .then((response) => {
+                if (response.status === 200) return response.json();
+            })
+            .then((userData) => {
+                setUsers(userData);
+            });
+    }, []);
 
     // Define initial state for users
     const [users, setUsers] = useState([]);
 
-    const handleDeleteClick = (id) =>{
-        fetch(`users/${id}`, {
+    const handleDeleteClick = (id) => {
+        fetch(`/users/${id}`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
 
-
-            method: "DELETE" ,
+            method: "DELETE",
+        }) .then((response) => {
+            window.location.href='users'
 
 
         })
-        window.location.href='/new'
-    }
 
+        ;
 
-
+    };
 
     // Define state for search query
     const [searchQuery, setSearchQuery] = useState("");
 
     // Define function to filter users by username
-    const filteredUsers = users.filter(user =>
+    const filteredUsers = users.filter((user) =>
         user.username.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    function handleUpdateClick(){
-        window.location.href = '/test/update'
+    function handleUpdateClick(id) {
+        window.location.href = `update/${id}`;
     }
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-
     return (
         <div className="flex flex-col h-screen">
-            <DeleteUserModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}  Delete={() => handleDeleteClick(selected)} />
+            <DeleteUserModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                Delete={() => handleDeleteClick(selected)}
+            />
 
             <div className="relative mx-4 my-2 mb-10">
                 <input
                     type="text"
                     placeholder="Search by username"
                     value={searchQuery}
-                    onChange={e => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:ring-opacity-50"/>
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:ring-opacity-50"
+                />
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3">
                     <SearchIcon className="h-5 w-5 text-gray-400" />
                 </div>
@@ -84,51 +86,58 @@ function DataTable() {
                     <tr>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
                             ID
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Username
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                            Nom d'utilisateur
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Password
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                            Mot de passe
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            First Name
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                            Prenom
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Last Name
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                            Nom
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Birth Year
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                            Date de naissance
                         </th>
                         <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-w">
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-w"
+                        >
                             Role
                         </th>
 
                         <th
                             scope="col"
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-w">
-
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-w"
+                        >
                             Actions
                         </th>
                     </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                     {/* Render rows for filtered users */}
-                    {filteredUsers.map(user => (
+                    {filteredUsers.map((user) => (
                         <tr key={user.id}>
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                 {user.id}
@@ -152,21 +161,22 @@ function DataTable() {
                                 {user.roles.substring(5)}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <button  onClick={handleUpdateClick}
-                                    className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded mr-3">
-                                    Update
+                                <button
+                                    onClick={() =>handleUpdateClick(user.id)}
+                                    className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded mr-3"
+                                >
+                                    Modifier
                                 </button>
-                                <button onClick={() => {
-                                    setIsModalOpen(true)
-                                    setSelected(user.id)
-
-                                }}
-                                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
-                                    Delete
+                                <button
+                                    onClick={() => {
+                                        setIsModalOpen(true);
+                                        setSelected(user.id);
+                                    }}
+                                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                                >
+                                    Supprimer
                                 </button>
                             </td>
-
-
                         </tr>
                     ))}
                     </tbody>
@@ -177,4 +187,3 @@ function DataTable() {
 }
 
 export default DataTable;
-

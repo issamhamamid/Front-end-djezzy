@@ -494,12 +494,12 @@ export const links = [
     title: 'Utilisateurs',
     links: [
       {
-        goto: "new" ,
+        goto: "test/users" ,
         name: "Liste d'utilisateurs",
         icon: <FiUsers />,
       },
       {
-        goto: "register" ,
+        goto: "test/register" ,
         name: "Ajouter un utilisateur",
         icon: <FiUserPlus />,
       },

@@ -47,7 +47,7 @@ function Register() {
         "birthDate": "2001-01-20",
         "lastname": registerFormData.lastName
       }
-      fetch("users/adduser", {
+      fetch("/users/adduser", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -61,7 +61,7 @@ function Register() {
 
 
       })
-      window.location.href ='/new'
+      window.location.href ='users'
 
     }
   } , [formErrors])

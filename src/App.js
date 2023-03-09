@@ -17,8 +17,8 @@ import React, {useState} from "react";
 import jwt_decode from "jwt-decode";
 import HomeNav from "./components/HomeNav";
 
-import New from "./components/New";
-import RegisterForm from "./components/RegisterForm";
+
+
 
 
 function App() {
@@ -63,19 +63,9 @@ function App() {
                 }></Route>
 
 
-                <Route path ='/n' element={<NavBar/>}></Route>
-                <Route path ='/register' element={
-                    <PrivateRoute>
-                        <RegisterForm/>
-                    </PrivateRoute>
-                }></Route>
-                <Route path ='/nav' element={<HomeNav/>}></Route>
-                <Route path ='/up' element={<UserTable/>}></Route>
-                <Route path ='/new' element={
-                    <PrivateRoute>
-                    <New/>
-                    </PrivateRoute>
-                }></Route>
+
+
+
 
 
             </Routes>
