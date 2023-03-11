@@ -81,8 +81,8 @@ function DataTable() {
             </div>
 
             <div className="flex-grow overflow-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
+                <table className="min-w-full divide-y divide-gray-400">
+                    <thead className="bg-gray-90">
                     <tr>
                         <th
                             scope="col"

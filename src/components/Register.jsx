@@ -34,6 +34,7 @@ function Register() {
 
 
   };
+
   const [token , setToken] = useLocalState("" , "token");
 
   useEffect(()=>{
@@ -56,12 +57,11 @@ function Register() {
 
         method: "POST" ,
         body: JSON.stringify(reqBody) ,
-      }).then(response => {if(response.status ===200) return response.json();
-      }).then(userData =>{
+      }).then(response => {if(response.status ===200) window.location.href ='users'
 
 
       })
-      window.location.href ='users'
+
 
     }
   } , [formErrors])
@@ -134,7 +134,7 @@ function Register() {
   return (
       <div>
 
-    <div className="bg-gray-200 min-h-screen">
+    <div className="bg-[#FAFBFB] min-h-screen">
       <div className="p-4 mx-auto max-w-lg pt-12">
         <form
           onSubmit={handleSubmit}

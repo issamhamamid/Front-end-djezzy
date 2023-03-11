@@ -13,9 +13,18 @@ const Update = () => {
   const {id} = useParams()
   const [Udata , setData] = useState(null)
 
-  function canCel() {
-    window.location.href = "/new";
+  const [formErrors , setFormErrors ] = useState({})
+  const [isSubmit , setIsSubmit] = useState(false)
+
+  function canCel(event) {
+    event.preventDefault();
+    window.location.href = "/test/users";
   }
+
+
+
+
+
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -61,7 +70,7 @@ const Update = () => {
   return (
       <div>
         <form
-            onSubmit={handleSubmit}
+
             className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         >
           <div className="mb-4">
@@ -163,6 +172,7 @@ const Update = () => {
             <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
+                onClick={handleSubmit}
             >
               Modifier
             </button>
