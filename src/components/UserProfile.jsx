@@ -30,7 +30,7 @@ const UserProfile = () => {
 
 
   return (
-      <div>
+      <div >
           <LogoutConfirmModal
               isOpen={isModalOpen}
               onClose={() => setIsModalOpen(false)}

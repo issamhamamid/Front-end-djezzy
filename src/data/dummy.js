@@ -483,7 +483,7 @@ export const links = [
     title: 'Dashboard',
     links: [
       {
-        goto: "test" ,
+        goto: "test/dashboard" ,
         name: 'acceuil',
         icon: <FiHome />,
       },

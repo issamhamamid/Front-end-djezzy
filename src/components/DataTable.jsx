@@ -67,7 +67,7 @@ function DataTable() {
                 Delete={() => handleDeleteClick(selected)}
             />
 
-            <div className="relative mx-4 my-2 mb-10">
+            <div className=" mx-4 my-2 mb-10 ">
                 <input
                     type="text"
                     placeholder="Search by username"
@@ -75,9 +75,7 @@ function DataTable() {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:ring-opacity-50"
                 />
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <SearchIcon className="h-5 w-5 text-gray-400" />
-                </div>
+
             </div>
 
             <div className="flex-grow overflow-auto">

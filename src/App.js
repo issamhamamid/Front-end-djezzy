@@ -16,6 +16,9 @@ import {useLocalState} from "./util/useLocalStorage";
 import React, {useState} from "react";
 import jwt_decode from "jwt-decode";
 import HomeNav from "./components/HomeNav";
+import ChatButton from "./components/ChatButton";
+import Chat from "./components/Chat";
+
 
 
 
@@ -46,6 +49,8 @@ function App() {
 
             <Routes>
                <Route path ='/login' element={<Login/>}></Route>
+
+                <Route path ='/chat' element={<Chat/>}></Route>
                 <Route path ='/' element={<Home/>}></Route>
                 <Route path ='/test/*' element={
                     role ==="ROLE_ADMIN" ? (

@@ -83,7 +83,7 @@ export default function Login() {
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col mb-6">
                 <label
-                  for="email"
+
                   className="mb-1 text-base tracking-wide text-gray-600"
                 >
                   Nom d'utilisateur:
@@ -105,7 +105,7 @@ export default function Login() {
               </div>
               <div className="flex flex-col mb-6">
                 <label
-                  for="password"
+
                   class="mb-1 text-base tracking-wide text-gray-600"
                 >
                   Mot de passe:

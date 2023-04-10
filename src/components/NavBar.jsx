@@ -37,20 +37,20 @@ function NavBar() {
   }, [screenSize]);
 
   const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
-    <TooltipComponent content={title} position="BottomCenter">
-      <button
-        className="relative text-xl rounded-full p-3 hover:bg-light-gray"
-        type="button"
-        onClick={customFunc}
-        style={{ color }}
-      >
+      <TooltipComponent content={title} position="BottomCenter">
+        <button
+            className="relative text-xl rounded-full p-3 hover:bg-light-gray"
+            type="button"
+            onClick={customFunc}
+            style={{ color }}
+        >
         <span
-          className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
-          style={{ background: dotColor }}
+            className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
+            style={{ background: dotColor }}
         />
-        {icon}
-      </button>
-    </TooltipComponent>
+          {icon}
+        </button>
+      </TooltipComponent>
   );
 
   const [token , setToken] = useLocalState("" , "token");
@@ -69,30 +69,35 @@ function NavBar() {
   }
 
   return (
-    <div className="flex justify-between p-2 md:mx-6 relative ">
-      <NavButton
-        title="Menu"
-        customFunc={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
-        color="red"
-        icon={<AiOutlineMenu />}
-      />
+      <div className="flex justify-between p-2 md:mx-6  fixed  ">
 
-      <div className="flex">
-        <TooltipComponent content="Profile" position="BottomCenter">
-          <div
-            className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            onClick={() => handleClick("userProfile")}
-          >
-            <img className="rounded-full w-10 h-10" src={user} />
-            <p>
-              <span className="text-black  ml-1 text-xl">{name}</span>
-            </p>
-            <MdKeyboardArrowDown className="text-gray-600 text-14 w-7 h-7" />
-          </div>
-        </TooltipComponent>
-        {isClicked.userProfile && <UserProfile />}
+        <NavButton
+
+            title="Menu"
+            customFunc={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
+            color="red"
+            icon={<AiOutlineMenu />}
+        />
+
+
+        <div className="flex fixed top-0 right-0 p-4 " >
+          <TooltipComponent content="Profile" position="BottomCenter">
+            <div
+                className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
+                onClick={() => handleClick("userProfile")}
+            >
+              <img className="rounded-full w-10 h-10" src={user} />
+              <p>
+                <span className="text-black  ml-1 text-xl">{name}</span>
+              </p>
+              <MdKeyboardArrowDown className="text-gray-600 text-14 w-7 h-7" />
+            </div>
+          </TooltipComponent>
+
+          {isClicked.userProfile && <UserProfile  />}
+
+        </div>
       </div>
-    </div>
   );
 }
 
