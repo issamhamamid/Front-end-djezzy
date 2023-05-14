@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css'
 
 import Sidebar from "./Sidebar";
+import Teest from "./Teest";
 import MainDashboard from "./MainDashboard";
 import {useStateContext} from "../contexts/ContextProvider";
 import NavBar from "./NavBar";
@@ -98,7 +99,11 @@ const Test = () => {
 
 
 
+ <Route path ='/y' element={
 
+                                    <Teest/>
+
+                            }></Route>
 
 
                         </Routes>

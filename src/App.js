@@ -18,6 +18,7 @@ import jwt_decode from "jwt-decode";
 import HomeNav from "./components/HomeNav";
 import ChatButton from "./components/ChatButton";
 import Chat from "./components/Chat";
+import Teest from "./components/Teest";
 
 
 
@@ -48,6 +49,7 @@ function App() {
         <BrowserRouter>
 
             <Routes>
+
                <Route path ='/login' element={<Login/>}></Route>
 
                 <Route path ='/chat' element={<Chat/>}></Route>

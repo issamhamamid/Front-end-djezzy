@@ -63,32 +63,16 @@ export default function Dashboard() {
                                     <div className="text-4xl font-bold text-gray-800">
                                         {card.value}
                                     </div>
-                                    <div className="flex items-center">
-                                        <div
-                                            className={`text-sm font-bold rounded-full px-2 py-1 ${
-                                                card.increase > 0 ? "bg-green-500" : "bg-red-500"
-                                            } text-white`}
-                                        >
-                                            {card.increase > 0 ? "+" : "-"}
-                                            {card.increase}%
-                                        </div>
-                                    </div>
+
                                 </div>
-                                <div className="relative w-full h-2 bg-gray-300 rounded-full">
-                                    <div
-                                        className={`absolute top-0 left-0 h-2 rounded-full ${
-                                            card.increase > 0 ? "bg-green-500" : "bg-red-500"
-                                        }`}
-                                        style={{ width: `${Math.abs(card.increase)}%` }}
-                                    ></div>
-                                </div>
+
                             </div>
                         </div>
                     ))}
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-2 my-4">
                     {/* Display 3 instances of the LineChart */}
-                    {[...Array(3)].map((_, index) => (
+                    {[...Array(1)].map((_, index) => (
                         <div className="bg-white rounded-md p-6" key={index}>
                             <h3 className="text-lg font-bold text-gray-800 mb-4">
                                 Line Chart
